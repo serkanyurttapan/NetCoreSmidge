@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Smidge;
 namespace NetCoreSmidge
 {
     public class Startup
@@ -23,6 +23,7 @@ namespace NetCoreSmidge
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSmidge(Configuration.GetSection("smidge"));
             services.AddControllersWithViews();
         }
 
@@ -46,6 +47,11 @@ namespace NetCoreSmidge
 
             app.UseAuthorization();
 
+            app.UseSmidge(bundle =>
+            {
+                bundle.CreateJs("my-js-bundle", "~/js/site.js", "~/js/site2.js");
+                bundle.CreateCss("my-css-bundle", "~/lib/bootstrap/dist/css/bootstrap.min.css","~/css/site.css");
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
