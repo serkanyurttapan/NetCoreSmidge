@@ -1,0 +1,1 @@
+function topla(a,b){return a+b;};;function carp(a,b){debugger;return a*b;debugger};;

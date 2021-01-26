@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - NetCoreSmidge</title>
-    <link rel="stylesheet" href="my-css-bundle" />
+        <link rel="stylesheet" href="my-css-bundle" debug="true" />
 </head>
 <body>
     <header>
@@ -41,12 +41,8 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <environment names="Development">
-        <script src="my-js-bundle" debug="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="my-js-bundle"></script>
-    </environment>
+    <script src="my-js-bundle" debug="true"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>
